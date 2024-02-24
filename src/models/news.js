@@ -14,7 +14,14 @@ const createTourNews = async reqBody => {
     return await mysql.query(statement, parameters);
 }
 
+const getNewsByMatchId = async params => {
+    const statement = 'select n.id, n.title, n.description from news n where n.matchId = ?;';
+    const parameters = [ params.matchId ];
+    return await mysql.query(statement, parameters);
+}
+
 module.exports = {
     createMatchNews: createMatchNews,
-    createTourNews: createTourNews
+    createTourNews: createTourNews,
+    getNewsByMatchId: getNewsByMatchId
 }

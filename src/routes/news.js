@@ -20,4 +20,14 @@ module.exports = function(app) {
             return next(err);
         }
     });
+
+    app.route('/news/match/:matchId').get(async (req, res, next) => {
+        try {
+            let params = req.params;
+            let result = await News.getNewsByMatchId(params);
+            return res.json(result);
+        } catch (err) {
+            return next(err);
+        }
+    });
 }

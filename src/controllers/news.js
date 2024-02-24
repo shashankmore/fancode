@@ -14,7 +14,12 @@ const createTourNews = async reqBody => {
     return await News.createTourNews(reqBody);
 }
 
+const getNewsByMatchId = async params => {
+    return await News.getNewsByMatchId(params);
+}
+
 module.exports = {
     createMatchNews: createMatchNews,
-    createTourNews: createTourNews
+    createTourNews: createTourNews,
+    getNewsByMatchId: getNewsByMatchId
 }
