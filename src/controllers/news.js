@@ -30,9 +30,22 @@ const getNewsByTourId = async params => {
     return res;
 }
 
+const getNewsBySportId = async params => {
+    const news = await News.getNewsBySportId(params);
+    const res = [];
+    news.forEach(n => {
+        if (n.matchId == null) {
+            delete n.matchId;
+        }
+        res.push(n);
+    });
+    return res;
+}
+
 module.exports = {
     createMatchNews: createMatchNews,
     createTourNews: createTourNews,
     getNewsByMatchId: getNewsByMatchId,
-    getNewsByTourId: getNewsByTourId
+    getNewsByTourId: getNewsByTourId,
+    getNewsBySportId: getNewsBySportId
 }
