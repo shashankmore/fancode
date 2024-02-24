@@ -30,4 +30,14 @@ module.exports = function(app) {
             return next(err);
         }
     });
+
+    app.route('/news/tour/:tourId').get(async (req, res, next) => {
+        try {
+            let params = req.params;
+            let result = await News.getNewsByTourId(params);
+            return res.json(result);
+        } catch (err) {
+            return next(err);
+        }
+    });
 }
