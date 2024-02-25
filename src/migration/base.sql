@@ -18,7 +18,8 @@ create table if not exists mydb.tours
     endTime timestamp not null,
     recUpdatedAt timestamp not null default current_timestamp on update current_timestamp,
     createdAt timestamp not null default current_timestamp,
-    foreign key (sportId) references sports(id)
+    foreign key (sportId) references sports(id),
+    index tourName (name)
 );
 
 create table if not exists mydb.matches
@@ -32,7 +33,8 @@ create table if not exists mydb.matches
     endTime timestamp not null,
     recUpdatedAt timestamp not null default current_timestamp on update current_timestamp,
     createdAt timestamp not null default current_timestamp,
-    foreign key (tourId) references tours(id)
+    foreign key (tourId) references tours(id),
+    index tourId (tourId)
 );
 
 create table if not exists mydb.news
